@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import GotService from '../../services/gotService';
 import styled from 'styled-components';
 import './charDetails.css';
 
@@ -18,26 +19,56 @@ const DescrTitle = styled.span`
 
 export default class CharDetails extends Component {
 
+    gotService = new GotService();
+    state = {
+        char: null
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.charId !== prevProps.charId) {
+            this.updateChar();
+        }
+    }
+
+    updateChar() {
+        const {charId} = this.props;
+        if(!charId) {
+            return
+        }
+
+        this.gotService.getCharacter(charId)
+            .then( (char) => {
+                this.setState({char})
+            })
+    }
+
     render() {
+
+        if (!this.state.char) {
+           return <span className='select-error'>Please select a character</span>
+        }
+
+        const {name, gender, born, died,culture} = this.state.char;
+
         return (
             <DetailsBlock className="rounded">
-                <h4>John Snow</h4>
+                <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item d-flex justify-content-between">
                         <DescrTitle>Gender</DescrTitle>
-                        <span>male</span>
+                        <span>{gender}</span>
                     </li>
                     <li className="list-group-item d-flex justify-content-between">
                         <DescrTitle>Born</DescrTitle>
-                        <span>1783</span>
+                        <span>{born}</span>
                     </li>
                     <li className="list-group-item d-flex justify-content-between">
                         <DescrTitle>Died</DescrTitle>
-                        <span>1820</span>
+                        <span>{died}</span>
                     </li>
                     <li className="list-group-item d-flex justify-content-between">
                         <DescrTitle>Culture</DescrTitle>
-                        <span>First</span>
+                        <span>{culture}</span>
                     </li>
                 </ul>
             </DetailsBlock>

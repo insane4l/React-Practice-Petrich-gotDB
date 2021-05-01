@@ -14,11 +14,14 @@ export default class GotService {
     }
 
 
-    getAllCharacters() {
-        return this.getResource('/characters/');
+    async getAllCharacters() {
+        const characters = await this.getResource('/characters?page=7&pageSize=10');
+        return characters.map(this._transformCharacter);
     }
-    getCharacter(id) {
-        return this.getResource(`/characters/${id}`);
+    
+    async getCharacter(id) {
+        const character = await this.getResource(`/characters/${id}`);
+        return this._transformCharacter(character);
     }
 
     getAllHouses() {
@@ -33,5 +36,49 @@ export default class GotService {
     }
     getBook(id) {
         return this.getResource(`/books/${id}`);
+    }
+
+    isSet(data) {
+        if (data) {
+            return data
+        } else {
+            return 'no data'
+        }
+    }
+
+    _extractId = (item) => {
+        const idRegExp = /\/([0-9]*)$/;
+        return item.url.match(idRegExp)[1];
+    }
+
+    _transformCharacter = (char) => {
+        return {
+            id: this._extractId(char),
+            name: this.isSet(char.name),
+            gender: this.isSet(char.gender),
+            born: this.isSet(char.born),
+            died: this.isSet(char.died),
+            culture: this.isSet(char.culture)
+        }
+    }
+
+    _transformHouse(house) {
+        return {
+            name: house.name,
+            region: house.region,
+            words: house.words,
+            titles: house.titles,
+            overlord: house.overlord,
+            ancestralWeapons: house.ancestralWeapons
+        }
+    }
+
+    _transformBook(book) {
+        return {
+            name: book.name,
+            numberOfPages: book.numberOfPages,
+            publiser: book.publiser,
+            released: book.released
+        }
     }
 }
