@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GotService from '../../services/gotService';
 import ItemList from '../itemList';
-import ItemDetails from '../itemDetails';
+import ItemDetails, {Field} from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 import RowBlock from '../rowBlock';
 
@@ -43,7 +43,12 @@ export default class CharactersPage extends Component {
         const itemDetails = (
             <ItemDetails 
                 itemId={this.state.selectedItem}
-                getData={this.gotService.getCharacter} />
+                getData={this.gotService.getCharacter} >
+                <Field field='gender' label='Gender'/>
+                <Field field='born' label='Born'/>
+                <Field field='died' label='Died'/>
+                <Field field='culture' label='Culture'/>
+            </ItemDetails>
         )
 
         return(

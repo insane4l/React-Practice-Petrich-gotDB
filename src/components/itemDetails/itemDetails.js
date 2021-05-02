@@ -17,6 +17,19 @@ const DescrTitle = styled.span`
     font-weight: bold;
 `;
 
+const Field = ({item, field, label}) => {
+    return (
+        <li className="list-group-item d-flex justify-content-between">
+            <DescrTitle>{label}</DescrTitle>
+            <span>{item[field]}</span>
+        </li>
+    )
+}
+
+export {
+    Field
+}
+
 export default class ItemDetails extends Component {
 
     gotService = new GotService();
@@ -49,28 +62,16 @@ export default class ItemDetails extends Component {
            return <span className='select-error'>Please select a character</span>
         }
 
-        const {name, gender, born, died,culture} = this.state.item;
+        const {item} = this.state;
+        const {name} = item;
 
         return (
             <DetailsBlock className="rounded">
                 <h4>{name}</h4>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between">
-                        <DescrTitle>Gender</DescrTitle>
-                        <span>{gender}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <DescrTitle>Born</DescrTitle>
-                        <span>{born}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <DescrTitle>Died</DescrTitle>
-                        <span>{died}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <DescrTitle>Culture</DescrTitle>
-                        <span>{culture}</span>
-                    </li>
+                    {React.Children.map(this.props.children, (child) => {
+                        return React.cloneElement(child, {item})
+                    })}
                 </ul>
             </DetailsBlock>
         );
