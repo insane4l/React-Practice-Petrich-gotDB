@@ -35,7 +35,8 @@ export default class CharactersPage extends Component {
                 <Col md='6'>
                     <ItemList 
                         onItemSelected={this.onItemSelected}
-                        getData={this.gotService.getAllCharacters} />
+                        getData={this.gotService.getAllCharacters}
+                        renderItem={ (item) => `${item.name} (${item.gender})`} />
                 </Col>
                 <Col md='6'>
                     <ItemDetails 
