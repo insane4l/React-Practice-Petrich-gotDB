@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GotService from '../../services/gotService';
 import styled from 'styled-components';
-import './charDetails.css';
+import './itemDetails.css';
 
 const DetailsBlock = styled.div`
     background-color: #fff;
@@ -17,38 +17,38 @@ const DescrTitle = styled.span`
     font-weight: bold;
 `;
 
-export default class CharDetails extends Component {
+export default class ItemDetails extends Component {
 
     gotService = new GotService();
     state = {
-        char: null
+        item: null
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.charId !== prevProps.charId) {
-            this.updateChar();
+        if (this.props.itemId !== prevProps.itemId) {
+            this.updateItem();
         }
     }
 
-    updateChar() {
-        const {charId} = this.props;
-        if(!charId) {
+    updateItem() {
+        const {itemId} = this.props;
+        if(!itemId) {
             return
         }
 
-        this.gotService.getCharacter(charId)
-            .then( (char) => {
-                this.setState({char})
+        this.gotService.getCharacter(itemId)
+            .then( (item) => {
+                this.setState({item})
             })
     }
 
     render() {
 
-        if (!this.state.char) {
+        if (!this.state.item) {
            return <span className='select-error'>Please select a character</span>
         }
 
-        const {name, gender, born, died,culture} = this.state.char;
+        const {name, gender, born, died,culture} = this.state.item;
 
         return (
             <DetailsBlock className="rounded">

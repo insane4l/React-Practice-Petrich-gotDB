@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import GotService from '../../services/gotService';
 import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
-import CharDetails from '../charDetails';
+import ItemDetails from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 
 export default class CharacterPage extends Component {
@@ -38,7 +38,7 @@ export default class CharacterPage extends Component {
                         getData={this.gotService.getAllCharacters} />
                 </Col>
                 <Col md='6'>
-                    <CharDetails charId={this.state.selectedItem} />
+                    <ItemDetails itemId={this.state.selectedItem} />
                 </Col>
             </Row>
         )
