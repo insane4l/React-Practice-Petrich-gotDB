@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
+import GotService from '../../services/gotService';
 import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
 import ErrorMessage from '../errorMessage';
 
 export default class CharacterPage extends Component {
+
+    gotService = new GotService();
     state = {
-        selectChar: null,
+        selectItem: null,
         error: false
     }
 
@@ -16,9 +19,9 @@ export default class CharacterPage extends Component {
         })
     }
 
-    onCharSelected = (id) => {
+    onItemSelected = (id) => {
         this.setState({
-            selectedChar: id
+            selectedItem: id
         })
     }
 
@@ -30,10 +33,12 @@ export default class CharacterPage extends Component {
         return(
             <Row>
                 <Col md='6'>
-                    <ItemList onCharSelected={this.onCharSelected} />
+                    <ItemList 
+                        onItemSelected={this.onItemSelected}
+                        getData={this.gotService.getAllCharacters} />
                 </Col>
                 <Col md='6'>
-                    <CharDetails charId={this.state.selectedChar} />
+                    <CharDetails charId={this.state.selectedItem} />
                 </Col>
             </Row>
         )
