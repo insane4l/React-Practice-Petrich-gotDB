@@ -5,7 +5,7 @@ import ItemList from '../itemList';
 import ItemDetails from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 
-export default class CharacterPage extends Component {
+export default class CharactersPage extends Component {
 
     gotService = new GotService();
     state = {
@@ -38,7 +38,9 @@ export default class CharacterPage extends Component {
                         getData={this.gotService.getAllCharacters} />
                 </Col>
                 <Col md='6'>
-                    <ItemDetails itemId={this.state.selectedItem} />
+                    <ItemDetails 
+                        itemId={this.state.selectedItem}
+                        getData={this.gotService.getCharacter} />
                 </Col>
             </Row>
         )

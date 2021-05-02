@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import CharacterPage from '../characterPage';
+import CharactersPage from '../pages/charactersPage';
 import ErrorMessage from '../errorMessage';
 
 
@@ -47,7 +47,7 @@ export default class App extends Component {
                             onClick={this.toggleRandomChar}>Toggle Random Character</button>
                         </Col>
                     </Row>
-                    <CharacterPage/>
+                    <CharactersPage/>
                 </Container>
             </>
         );

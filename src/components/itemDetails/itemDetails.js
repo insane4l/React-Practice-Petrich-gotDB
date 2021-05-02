@@ -36,7 +36,8 @@ export default class ItemDetails extends Component {
             return
         }
 
-        this.gotService.getCharacter(itemId)
+        const {getData} = this.props;
+        getData(itemId)
             .then( (item) => {
                 this.setState({item})
             })
