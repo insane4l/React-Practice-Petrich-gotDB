@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import CharactersPage from '../pages/charactersPage';
+import {CharactersPage, HousesPage, BooksPage} from '../pages/';
 import ErrorMessage from '../errorMessage';
 
 
 export default class App extends Component {
-
     state = {
         showRandomChar: true,
         error: false
@@ -48,6 +47,8 @@ export default class App extends Component {
                         </Col>
                     </Row>
                     <CharactersPage/>
+                    <BooksPage/>
+                    <HousesPage/>
                 </Container>
             </>
         );
