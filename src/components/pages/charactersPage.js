@@ -37,17 +37,17 @@ export default class CharactersPage extends Component {
             <ItemList 
                 onItemSelected={this.onItemSelected}
                 getData={this.gotService.getAllCharacters}
-                renderItem={ (item) => `${item.name} (${item.gender})`} />
+                renderItem={ ({name, gender}) => `${name} (${gender})`} />
         )
 
         const itemDetails = (
             <ItemDetails 
                 itemId={this.state.selectedItem}
                 getData={this.gotService.getCharacter} >
-                <Field field='gender' label='Gender'/>
-                <Field field='born' label='Born'/>
-                <Field field='died' label='Died'/>
-                <Field field='culture' label='Culture'/>
+                    <Field field='gender' label='Gender'/>
+                    <Field field='born' label='Born'/>
+                    <Field field='died' label='Died'/>
+                    <Field field='culture' label='Culture'/>
             </ItemDetails>
         )
 
