@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import './app.css';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import {CharactersPage, HousesPage, BooksPage} from '../pages/';
+import {CharactersPage, HousesPage, BooksPage, BooksItem} from '../pages/';
 import ErrorMessage from '../errorMessage';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+import './app.css';
 
 
 export default class App extends Component {
@@ -51,8 +52,16 @@ export default class App extends Component {
                         </Row>
 
                         <Route path='/characters' exact component={CharactersPage} />
-                        <Route path='/books' exact component={BooksPage} />
                         <Route path='/houses' exact component={HousesPage} />
+
+                        <Route path='/books' exact component={BooksPage} />
+                        <Route path='/books/:id' render={
+                            ({match}) => {
+                                const {id} = match.params;
+
+                                return <BooksItem bookId={id}/>
+                            }
+                        } />
                         
                     </Container>
                 </div>
