@@ -47,6 +47,7 @@ export default class App extends Component {
                             <Col lg={{size: 5, offset: 0}}>
                                 {char}
                                 <button
+                                className="btn btn-light"
                                 onClick={this.toggleRandomChar}>Toggle Random Character</button>
                             </Col>
                         </Row>

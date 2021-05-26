@@ -7,6 +7,7 @@ const ErrorElem = styled.div`
     font-weight: bold;
     text-align: center;
     color: red;
+    text-shadow: 0px 0px 22px rgba(225, 14, 0, 1);
 `;
 
 const ErrorMessage = () => {

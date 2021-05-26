@@ -7,6 +7,11 @@ const ListGroupItem = styled.li`
     cursor: pointer;
 `;
 
+const ListGroup = styled.ul`
+    margin-top: 40px;
+    box-shadow: 0px 0px 13px 0px rgba(255, 50, 50, 0.66);
+`
+
 export default class ItemList extends Component {
 
     state = {
@@ -73,9 +78,9 @@ export default class ItemList extends Component {
         const items = this.renderItems(itemList);
 
         return (
-            <ul className="item-list list-group">
+            <ListGroup className="item-list list-group">
                 {items}
-            </ul>
+            </ListGroup>
         );
     }
 }

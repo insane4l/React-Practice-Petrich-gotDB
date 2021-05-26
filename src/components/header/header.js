@@ -13,6 +13,7 @@ const HeaderTitle = styled.h3`
     font-size: 24px;
     color: #fff;
     margin: 0;
+    text-shadow: 0px 0px 22px rgba(225, 14, 0, 1);
 `;
 
 const HeaderLinks = styled.ul`
@@ -21,6 +22,7 @@ const HeaderLinks = styled.ul`
     align-items: center;
     color: #fff;
     list-style-type: none;
+    text-shadow: 0px 0px 22px rgba(225, 14, 0, 1);
     li {
         margin-right: 20px;
         font-size: 18px;

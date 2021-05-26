@@ -7,7 +7,8 @@ import ErrorMessage from '../errorMessage';
 const RandomBlock = styled.div`
     background-color: #fff;
     padding: 25px 25px 15px 25px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 13px 0px rgba(255, 50, 50, 0.66);
     h4 {
         margin-bottom: 20px;
         text-align: center;
